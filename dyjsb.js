@@ -45,14 +45,14 @@ $.idx = ($.idx = ($.getval("dyjsbcount") || "1") - 1) > 0 ? `${$.idx + 1}` : "";
 const signheaderArr = [],signcookieArr=[]
 const stepheaderArr = [],stepkeyArr=[]
 const readheaderArr = [],readkeyArr=[]
-let signheader = $.getdata('signheader')
-let signcookie = $.getdata('signcookie')
 
-let stepheader = $.getdata('stepheader')
-let stepkey = $.getdata('stepkey')
+let signheader = []
+let signcookie = []
+let stepheader = []
+let stepkey = []
+let readheader = []
+let readkey = []
 
-let readheader = $.getdata('readheader')
-let readkey = $.getdata('readkey')
 let dyjsbaccount = ($.getval('dyjsbaccount') || 0)
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=1;//新用户自动邀请，0关闭，1默认开启
@@ -77,7 +77,7 @@ if (isGetCookie) {
    GetCookie();
    $.done()
 } 
-if ($.isNode() &&process.env.SIGNHEADER) {
+if ($.isNode()) {
 //sign
   if (process.env.SIGNHEADER && process.env.SIGNHEADER.indexOf('#') > -1) {
    signheader = process.env.SIGNHEADER.split('#');
