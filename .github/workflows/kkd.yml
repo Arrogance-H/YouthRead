@@ -1,0 +1,33 @@
+name: kkd
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '0 */6 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+      KKDHEADER: ${{ secrets.KKDHEADER }}
+      KKDCOOKIE: ${{ secrets.KKDCOOKIE }}
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【KKD】'
+        if: env.KKDHEADER
+        run: |
+          node kkd.js
+        env:
+          KKDHEADER: ${{ secrets.KKDHEADER }}
