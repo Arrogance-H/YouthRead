@@ -77,7 +77,7 @@ if (isGetCookie) {
    GetCookie();
    $.done()
 } 
-if ($.isNode()) {
+if ($.isNode() &&process.env.SIGNHEADER) {
 //sign
   if (process.env.SIGNHEADER && process.env.SIGNHEADER.indexOf('#') > -1) {
    signheader = process.env.SIGNHEADER.split('#');
