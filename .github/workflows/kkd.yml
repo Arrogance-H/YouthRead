@@ -1,4 +1,4 @@
-name: 微博每日签到打卡
+name: 快看点
 
 on:
   workflow_dispatch:
