@@ -98,6 +98,7 @@ if ($.isNode()) {
    signcookie = process.env.SIGNCOOKIE.split()
   };
 //step
+/*
 if (process.env.STEPHEADER && process.env.STEPHEADER.indexOf('#') > -1) {
    stepheader = process.env.STEPHEADER.split('#');
    console.log(`您选择的是用"#"隔开\n`)
@@ -116,6 +117,7 @@ if (process.env.STEPHEADER && process.env.STEPHEADER.indexOf('#') > -1) {
   } else  {
    stepkey = process.env.STEPKEY.split()
   };
+*/
 //read
 if (process.env.READHEADER && process.env.READHEADER.indexOf('#') > -1) {
    readheader = process.env.READHEADER.split('#');
@@ -173,16 +175,16 @@ Object.keys(readheader).forEach((item) => {
  } else {
     signheaderArr.push($.getdata('signheader'))
     signcookieArr.push($.getdata('signcookie'))
-    stepheaderArr.push($.getdata('stepheader'))
-    stepkeyArr.push($.getdata('stepkey'))
+    //stepheaderArr.push($.getdata('stepheader'))
+    //stepkeyArr.push($.getdata('stepkey'))
     readheaderArr.push($.getdata('readheader'))
     readkeyArr.push($.getdata('readkey'))
     let dyjsbcount = ($.getval('dyjsbcount') || '1');
   for (let i = 2; i <= dyjsbcount; i++) {
     signheaderArr.push($.getdata(`signheader${i}`))
     signcookieArr.push($.getdata(`signcookie${i}`))
-    stepheaderArr.push($.getdata(`stepheader${i}`))
-    stepkeyArr.push($.getdata(`stepkey${i}`))
+    //stepheaderArr.push($.getdata(`stepheader${i}`))
+    //stepkeyArr.push($.getdata(`stepkey${i}`))
     readheaderArr.push($.getdata(`readheader${i}`))
     readkeyArr.push($.getdata(`readkey${i}`))
   }
@@ -198,8 +200,8 @@ if (!signheaderArr[0]) {
       message = ''
       signheader = signheaderArr[i];
       signcookie = signcookieArr[i];
-      stepheader = stepheaderArr[i];
-      stepkey = stepkeyArr[i];
+      //stepheader = stepheaderArr[i];
+      //stepkey = stepkeyArr[i];
       readheader = readheaderArr[i];
       readkey = readkeyArr[i];
       $.index = i + 1;
