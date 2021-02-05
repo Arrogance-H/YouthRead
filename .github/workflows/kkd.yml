@@ -1,9 +1,9 @@
-name: kkd
+name: 微博每日签到打卡
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 */6 * * *'
+     - cron: '5 18 * * *'
   watch:
     types: started
 jobs:
@@ -13,21 +13,26 @@ jobs:
     env:
       KKDHEADER: ${{ secrets.KKDHEADER }}
       KKDCOOKIE: ${{ secrets.KKDCOOKIE }}
-      
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
+        if: env.KKDHEADER
         run: |
           npm install
-          
       - name: '运行 【KKD】'
         if: env.KKDHEADER
         run: |
           node kkd.js
         env:
-          KKDHEADER: ${{ secrets.KKDHEADER }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
