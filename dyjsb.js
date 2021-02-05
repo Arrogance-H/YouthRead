@@ -44,14 +44,14 @@ const notify = $.isNode() ?require('./sendNotify') : '';
 $.idx = ($.idx = ($.getval("dyjsbcount") || "1") - 1) > 0 ? `${$.idx + 1}` : ""; // 账号扩展字符
 const signheaderArr = [],signcookieArr=[]
 const stepheaderArr = [],stepkeyArr=[]
-const readheaderArr = [],readkeyArr=[]
+const readheaderArr = [],readkeyArr=[];
 
-let signheader = []
-let signcookie = []
-let stepheader = []
-let stepkey = []
-let readheader = []
-let readkey = []
+let signheader = [];
+let signcookie = [];
+let stepheader = [];
+let stepkey = [];
+let readheader = [];
+let readkey = [];
 
 let dyjsbaccount = ($.getval('dyjsbaccount') || 0)
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
